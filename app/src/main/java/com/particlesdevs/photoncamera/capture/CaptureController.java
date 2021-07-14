@@ -83,7 +83,7 @@ import com.particlesdevs.photoncamera.processing.parameters.ResolutionSolution;
 import com.particlesdevs.photoncamera.settings.PreferenceKeys;
 import com.particlesdevs.photoncamera.ui.camera.CameraFragment;
 import com.particlesdevs.photoncamera.ui.camera.viewmodel.TimerFrameCountViewModel;
-import com.particlesdevs.photoncamera.ui.camera.views.viewfinder.AutoFitPreviewView;
+import com.particlesdevs.photoncamera.ui.camera.views.viewfinder.GLPreview;
 import com.particlesdevs.photoncamera.util.log.Logger;
 
 import java.io.File;
@@ -296,7 +296,7 @@ public class CaptureController implements MediaRecorder.OnInfoListener {
     /**
      * An {@link AutoFitPreviewView} for camera preview.
      */
-    private AutoFitPreviewView mTextureView;
+    private GLPreview mTextureView;
     /**
      * A {@link CameraCaptureSession } for camera preview.
      */
@@ -1636,7 +1636,7 @@ public class CaptureController implements MediaRecorder.OnInfoListener {
 
     public void resumeCamera() {
         if (mTextureView == null)
-            mTextureView = new AutoFitPreviewView(activity);
+            mTextureView = new GLPreview(activity);
         if (mTextureView.isAvailable()) {
             openCamera(mTextureView.getWidth(), mTextureView.getHeight());
         } else {
